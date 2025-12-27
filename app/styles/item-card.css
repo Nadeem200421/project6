@@ -1,0 +1,206 @@
+/* =========================
+   Item Card Styling
+========================= */
+.item-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .item-card {
+  background-color: #374151; /* gray-700 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   Item Link & Image
+========================= */
+.item-link {
+  text-decoration: none;
+  color: inherit;
+  flex-grow: 1;
+}
+
+.item-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .item-image-wrapper {
+  background-color: #4b5563;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover .item-image {
+  transform: scale(1.05);
+}
+
+.item-placeholder p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.dark .item-placeholder p {
+  color: #d1d5db;
+}
+
+/* =========================
+   Item Title & Meta
+========================= */
+.item-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+
+.dark .item-title {
+  color: #f3f4f6;
+}
+
+.item-meta {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dark .item-meta {
+  color: #d1d5db;
+}
+
+.item-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+
+.dark .item-desc {
+  color: #d1d5db;
+}
+
+/* =========================
+   Item Actions (Buttons)
+========================= */
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.btn-primary {
+  flex: 1;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-secondary {
+  flex: 1;
+  background-color: #f3f4f6;
+  color: #111827;
+  border: 2px solid #d1d5db;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.dark .btn-primary {
+  background-color: #3b82f6;
+}
+
+.dark .btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.dark .btn-secondary {
+  background-color: #4b5563;
+  color: #f3f4f6;
+  border-color: #6b7280;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #374151;
+  border-color: #4b5563;
+}
+
+/* =========================
+   Responsive Adjustments
+========================= */
+@media (max-width: 768px) {
+  .item-image-wrapper {
+    height: 180px;
+  }
+
+  .item-title {
+    font-size: 1rem;
+  }
+
+  .item-meta,
+  .item-desc {
+    font-size: 0.8rem;
+  }
+
+  .item-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .item-image-wrapper {
+    height: 150px;
+  }
+
+  .item-title {
+    font-size: 0.95rem;
+  }
+
+  .item-meta,
+  .item-desc {
+    font-size: 0.75rem;
+  }
+}

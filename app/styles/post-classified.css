@@ -1,0 +1,193 @@
+/* General Page Styles */
+.post-classified-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  min-height: 80vh;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode */
+.post-classified-container.light {
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  color: #000;
+}
+
+/* Dark Mode */
+.post-classified-container.dark {
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+  color: #fff;
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.post-classified-container.dark .card {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Title */
+.card h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: inherit;
+}
+
+/* Input & Textarea */
+input,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease, background 0.3s ease, color 0.3s ease;
+  background-color: #f8fafc;
+  resize: none;
+}
+
+.post-classified-container.dark input,
+.post-classified-container.dark textarea {
+  background-color: #2c2c2c;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* Buttons */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background-color: #3b82f6;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #2563eb;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid currentColor;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Error & Success Messages */
+.error {
+  color: #ef4444;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: #22c55e;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Not Logged In */
+.not-logged-in {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.not-logged-in p {
+  color: #ef4444;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.not-logged-in button {
+  padding: 12px 25px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.not-logged-in button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .card {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 800px) {
+  .post-classified-container {
+    padding: 30px 15px;
+  }
+
+  .card {
+    padding: 30px 20px;
+  }
+
+  .card h1 {
+    font-size: 24px;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+
+  .btn-submit {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 25px 15px;
+  }
+
+  .card h1 {
+    font-size: 22px;
+  }
+}

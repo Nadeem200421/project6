@@ -1,0 +1,26 @@
+/* styles/event-details.css */
+
+.event-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .event-details-page {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .event-details-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .event-details-page p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Dark mode handled via Tailwind dark: classes */

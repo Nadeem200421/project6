@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import Card from "../ui/Card";
+import "../../styles/shop-card.css";
 
 interface ShopCardProps {
   shop: {
@@ -16,15 +17,23 @@ interface ShopCardProps {
 
 const ShopCard: FC<ShopCardProps> = ({ shop }) => {
   return (
-    <Link href={`/shops/${shop.id}`}>
-      <Card className="hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-        <h2 className="text-lg font-semibold">{shop.name}</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          📍 {shop.location} &nbsp; | &nbsp; 🕒 {shop.hours}
+    <Link href={`/shops/${shop.id}`} className="shop-card-link">
+      <Card className="shop-card">
+        <div className="shop-card-header">
+          <h2 className="shop-name">{shop.name}</h2>
+        </div>
+
+        <p className="shop-meta">
+          <span>📍 {shop.location}</span>
+          <span className="divider">•</span>
+          <span>🕒 {shop.hours}</span>
         </p>
-        <p className="text-sm mt-2 text-gray-700 dark:text-gray-300 line-clamp-3">
-          {shop.description}
-        </p>
+
+        <p className="shop-description">{shop.description}</p>
+
+        <div className="shop-card-footer">
+          <span className="view-details">View Shop →</span>
+        </div>
       </Card>
     </Link>
   );

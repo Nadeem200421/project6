@@ -3,18 +3,19 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
 import ItemCard from "../components/marketplace/ItemCard";
+import "../styles/market.css";
 
 export default function MarketplacePage() {
   const items = useSelector((state: RootState) => state.data.items);
 
   return (
-    <div className="py-10 space-y-8">
-      <h1 className="text-2xl sm:text-3xl font-bold">
+    <div className="marketplace-page py-10 px-4 sm:px-6 lg:px-12 space-y-8">
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white text-center">
         Marketplace
       </h1>
 
       {items.length === 0 ? (
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-center text-gray-600 dark:text-gray-300 mt-6">
           No marketplace items available.
         </p>
       ) : (

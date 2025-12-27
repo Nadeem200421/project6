@@ -1,57 +1,64 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/features/authSlice";
+import { toggleTheme, restoreTheme } from "../redux/features/themeSlice";
 import type { RootState } from "../redux/store";
 import { useRouter } from "next/navigation";
+import "../styles/login.css";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const isLoggedIn = useSelector(
-    (state: RootState) => state.auth.isLoggedIn
-  );
+
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+  const darkMode = useSelector((state: RootState) => state.theme.mode === "dark");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  if (isLoggedIn) {
-    router.push("/");
-  }
+  // Restore theme from localStorage on mount
+  useEffect(() => {
+    dispatch(restoreTheme());
+  }, [dispatch]);
+
+  // Redirect if logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push("/");
+    }
+  }, [isLoggedIn, router]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
     }
-
     setError("");
     dispatch(login({ email }));
-    router.push("/");
   };
 
   return (
-    <div className="flex min-h-[80vh] items-center justify-center">
-      <div className="card w-full max-w-md space-y-6">
-        <h1 className="text-2xl font-bold text-center">
-          Login
-        </h1>
+    <div className={`login-page ${darkMode ? "dark" : "light"}`}>
+      {/* Theme toggle button */}
+      <button className="theme-toggle" onClick={() => dispatch(toggleTheme())}>
+        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+      </button>
 
-        {error && (
-          <p className="text-sm text-red-500 text-center">
-            {error}
-          </p>
-        )}
+      <div className="login-card">
+        <h1 className="login-title">Welcome Back</h1>
+        <p className="login-subtitle">Login to continue</p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {error && <div className="error-message">{error}</div>}
+
+        <form onSubmit={handleSubmit} className="login-form">
           <input
             type="email"
-            placeholder="Email"
-            className="input"
+            placeholder="Email address"
+            className="login-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -59,24 +66,18 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Password"
-            className="input"
+            className="login-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit" className="btn-primary w-full">
+          <button type="submit" className="login-button">
             Login
           </button>
         </form>
 
-        <p className="text-sm text-center text-gray-600 dark:text-gray-300">
-          Don’t have an account?{" "}
-          <a
-            href="/register"
-            className="text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            Register
-          </a>
+        <p className="login-footer">
+          Don’t have an account? <a href="/register">Create one</a>
         </p>
       </div>
     </div>

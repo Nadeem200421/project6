@@ -1,0 +1,143 @@
+/* =========================
+   Global Styles
+========================= */
+.home-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  font-family: 'Inter', sans-serif;
+  color: #1f2937; /* dark text */
+}
+
+.home-container p {
+  color: #4b5563; /* gray-600 */
+}
+
+/* Dark mode support */
+.dark .home-container {
+  color: #f3f4f6;
+}
+
+.dark .home-container p {
+  color: #d1d5db;
+}
+
+/* =========================
+   Hero Section
+========================= */
+.hero-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   Sections
+========================= */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  border-bottom: 2px solid #d1d5db;
+  padding-bottom: 0.5rem;
+}
+
+/* Dark mode section border */
+.dark .section h2 {
+  border-color: #4b5563;
+}
+
+/* =========================
+   Grid Layouts
+========================= */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.events-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.shops-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.marketplace-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* =========================
+   Card Styling (shared)
+========================= */
+.card-grid > * {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dark .card-grid > * {
+  background-color: #1f2937;
+}
+
+.card-grid > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+@media (max-width: 1024px) {
+  .hero-section h1 {
+    font-size: 2.25rem;
+  }
+  .section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .card-grid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+  .section h2 {
+    font-size: 1.25rem;
+  }
+}

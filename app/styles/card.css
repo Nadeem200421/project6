@@ -1,0 +1,82 @@
+/* =========================
+   Base Card
+========================= */
+/* =========================
+   FULL PAGE DARK MODE
+   (Auto dark for ALL sections)
+========================= */
+
+/* Page background */
+.dark,
+.dark body {
+  background-color: #020617; /* true black */
+  color: #e5e7eb;
+}
+
+/* ALL sections auto dark */
+.dark section {
+  background-color: #020617;
+}
+
+/* Section inner padding areas */
+.dark .py-10 {
+  background-color: #020617;
+}
+
+/* Ensure spacing wrappers stay dark */
+.dark .space-y-14 {
+  background-color: #020617;
+}
+
+/* Headings & paragraphs */
+.dark section h1,
+.dark section h2,
+.dark section h3,
+.dark section p {
+  color: #f3f4f6;
+}
+
+/* Links inside sections */
+.dark section a {
+  color: #93c5fd;
+}
+
+.dark section a:hover {
+  color: #bfdbfe;
+}
+
+/* Dividers / subtle borders if any */
+.dark section hr {
+  border-color: #1f2937;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* =========================
+   Dark Mode
+========================= */
+.dark .card {
+  background: #1f2937; /* gray-800 */
+  border-color: #374151; /* gray-700 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+   Hover Utility (optional)
+========================= */
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+}

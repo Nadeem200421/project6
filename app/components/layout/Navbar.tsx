@@ -1,65 +1,94 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "../../redux/store";
-import { logout } from "../../redux/features/authSlice";
-import { toggleTheme } from "../../redux/features/themeSlice";
+import type { RootState, AppDispatch } from "../../redux/store";
+import { logout, restoreAuth } from "../../redux/features/authSlice";
+import { toggleTheme, restoreTheme } from "../../redux/features/themeSlice";
+import "../../styles/navbar.css";
 
 export default function Navbar() {
-  const dispatch = useDispatch();
-  const { isLoggedIn, user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch<AppDispatch>();
+  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
   const theme = useSelector((state: RootState) => state.theme.mode);
 
-  return (
-    <nav className="bg-white dark:bg-gray-800 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-blue-600 dark:text-blue-400">
-            LocalCommunity
-          </Link>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-          {/* Links */}
-          <div className="flex items-center space-x-4">
-            <Link href="/events" className="hover:text-blue-600 dark:hover:text-blue-400">
-              Events
-            </Link>
-            <Link href="/shops" className="hover:text-blue-600 dark:hover:text-blue-400">
-              Shops
-            </Link>
-            <Link href="/marketplace" className="hover:text-blue-600 dark:hover:text-blue-400">
-              Marketplace
-            </Link>
+  /* Restore auth & theme */
+  useEffect(() => {
+    dispatch(restoreAuth());
+    dispatch(restoreTheme());
+  }, [dispatch]);
+
+  /* Apply dark mode */
+  useEffect(() => {
+    document.body.classList.toggle("dark", theme === "dark");
+  }, [theme]);
+
+  /* Close menu on navigation */
+  useEffect(() => {
+    const closeMenu = () => setMenuOpen(false);
+    window.addEventListener("popstate", closeMenu);
+    return () => window.removeEventListener("popstate", closeMenu);
+  }, []);
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <Link href="/" className="navbar-logo">
+          Comm<span>Unity</span>
+        </Link>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="menu-toggle"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✖" : "☰"}
+        </button>
+
+        {/* Menu */}
+        <div className={`navbar-content ${menuOpen ? "open" : ""}`}>
+          <div className="navbar-links">
+            <Link href="/events">Events</Link>
+            <Link href="/shops">Shops</Link>
+            <Link href="/marketplace">Marketplace</Link>
+
             {isLoggedIn && (
               <>
-                <Link href="/favourites" className="hover:text-blue-600 dark:hover:text-blue-400">
-                  Favourites
-                </Link>
-                <Link href="/post-classified" className="hover:text-blue-600 dark:hover:text-blue-400">
-                  Post Classified
-                </Link>
+                <Link href="/favourites">Favourites</Link>
+                <Link href="/post-classified">Post Classified</Link>
               </>
             )}
+          </div>
 
+          <div className="navbar-actions">
             {/* Theme Toggle */}
             <button
-              className="ml-2 btn-secondary px-3 py-1"
+              className="icon-btn"
+              aria-label="Toggle theme"
               onClick={() => dispatch(toggleTheme())}
             >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
 
-            {/* Login / Logout */}
+            {/* Auth */}
             {isLoggedIn ? (
               <button
-                className="btn-secondary px-3 py-1"
-                onClick={() => dispatch(logout())}
+                className="btn-outline"
+                onClick={() => {
+                  dispatch(logout());
+                  setMenuOpen(false);
+                }}
               >
-                Logout ({user?.name || user?.email})
+                Logout
               </button>
             ) : (
-              <Link href="/login" className="btn-primary px-3 py-1">
+              <Link href="/login" className="btn-primary">
                 Login
               </Link>
             )}

@@ -5,9 +5,11 @@ import type { RootState } from "../redux/store";
 import { useRouter } from "next/navigation";
 import ItemCard from "../components/marketplace/ItemCard";
 import ShopCard from "../components/shops/ShopCard";
+import "../styles/favourites.css";
 
 export default function FavouritesPage() {
   const router = useRouter();
+
   const isLoggedIn = useSelector(
     (state: RootState) => state.auth.isLoggedIn
   );
@@ -15,18 +17,17 @@ export default function FavouritesPage() {
   const favourites = useSelector(
     (state: RootState) => state.favourites.items
   );
+
   const favouriteShops = useSelector(
     (state: RootState) => state.favourites.shops
   );
 
   if (!isLoggedIn) {
     return (
-      <div className="py-20 text-center">
-        <p className="text-red-500 text-lg">
-          Please login first to view your favourites.
-        </p>
+      <div className="favourites-auth">
+        <p>Please login first to view your favourites.</p>
         <button
-          className="mt-4 btn-primary"
+          className="btn-primary"
           onClick={() => router.push("/login")}
         >
           Go to Login
@@ -36,19 +37,17 @@ export default function FavouritesPage() {
   }
 
   return (
-    <div className="py-10 space-y-10">
+    <div className="favourites-page">
       {/* Favourite Shops */}
-      <section className="space-y-6">
-        <h1 className="text-2xl sm:text-3xl font-bold">
-          Favourite Shops
-        </h1>
+      <section className="favourites-section">
+        <h1 className="section-title">Favourite Shops</h1>
 
         {favouriteShops.length === 0 ? (
-          <p className="text-gray-600 dark:text-gray-300">
+          <div className="empty-state">
             You have not saved any shops yet.
-          </p>
+          </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid shops-grid">
             {favouriteShops.map((shop) => (
               <ShopCard key={shop.id} shop={shop} />
             ))}
@@ -56,18 +55,16 @@ export default function FavouritesPage() {
         )}
       </section>
 
-      {/* Favourite Marketplace Items */}
-      <section className="space-y-6">
-        <h1 className="text-2xl sm:text-3xl font-bold">
-          Favourite Items
-        </h1>
+      {/* Favourite Items */}
+      <section className="favourites-section">
+        <h1 className="section-title">Favourite Items</h1>
 
         {favourites.length === 0 ? (
-          <p className="text-gray-600 dark:text-gray-300">
+          <div className="empty-state">
             You have not saved any items yet.
-          </p>
+          </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid items-grid">
             {favourites.map((item) => (
               <ItemCard key={item.id} item={item} />
             ))}

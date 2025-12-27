@@ -1,31 +1,37 @@
+// components/events/EventCard.tsx
 "use client";
 
 import Link from "next/link";
 import { FC } from "react";
-import Card from "../ui/Card";
+import { EventType } from "../../data/events";
+import "../../styles/event-card.css";
 
 interface EventCardProps {
-  event: {
-    id: string;
-    title: string;
-    date: string;
-    location: string;
-    description: string;
-  };
+  event: EventType;
 }
 
 const EventCard: FC<EventCardProps> = ({ event }) => {
   return (
-    <Link href={`/events/${event.id}`}>
-      <Card className="hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-        <h2 className="text-lg font-semibold">{event.title}</h2>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          📅 {event.date} &nbsp; | &nbsp; 📍 {event.location}
-        </p>
-        <p className="text-sm mt-2 text-gray-700 dark:text-gray-300 line-clamp-3">
-          {event.description}
-        </p>
-      </Card>
+    <Link
+      href={`/events/${event.id}`}
+      className="event-card-link group"
+      aria-label={`View details for ${event.title}`}
+    >
+      <div className="event-card">
+        <div className="event-card-content">
+          <h2 className="event-card-title">{event.title}</h2>
+
+          <div className="event-card-meta">
+            <span className="event-card-date">📅 {event.date}</span>
+            <span className="event-card-separator">•</span>
+            <span className="event-card-location">📍 {event.location}</span>
+          </div>
+
+          <p className="event-card-desc">{event.description}</p>
+
+          <span className="event-card-cta">View Details →</span>
+        </div>
+      </div>
     </Link>
   );
 };

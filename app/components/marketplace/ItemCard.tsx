@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FC } from "react";
-import Card from "../ui/Card";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../../redux/store";
 import { addToCart } from "../../redux/features/cartSlice";
 import { addFavourite } from "../../redux/features/favouritesSlice";
 import type { ItemType } from "../../data/marketplace";
+import "../../styles/item-card.css";
 
 interface ItemCardProps {
   item: ItemType;
@@ -15,17 +16,14 @@ interface ItemCardProps {
 
 const ItemCard: FC<ItemCardProps> = ({ item }) => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const isLoggedIn = useSelector(
-    (state: RootState) => state.auth.isLoggedIn
-  );
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
 
   const handleAddToCart = () => {
     if (!isLoggedIn) {
       alert("Please login first to add to cart!");
       return;
     }
-    dispatch(addToCart(item)); // ✅ item matches cartSlice type
+    dispatch(addToCart(item));
   };
 
   const handleAddFavourite = () => {
@@ -33,43 +31,46 @@ const ItemCard: FC<ItemCardProps> = ({ item }) => {
       alert("Please login first to save favourites!");
       return;
     }
-    dispatch(addFavourite(item)); // ✅ item matches favouritesSlice type
+    dispatch(addFavourite(item));
   };
 
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-      <Link href={`/marketplace/${item.id}`}>
-        <h2 className="text-lg font-semibold">
-          {item.title}
-        </h2>
+    <div className="item-card">
+      <Link href={`/marketplace/${item.id}`} className="item-link">
+        <div className="item-image-wrapper">
+          {item.image ? (
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={400}
+              height={250}
+              className="item-image"
+            />
+          ) : (
+            <div className="item-placeholder">
+              <p>No Image Available</p>
+            </div>
+          )}
+        </div>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          💰 ₹{item.price} &nbsp; | &nbsp; 📍 {item.location}
-        </p>
-
-        <p className="text-sm mt-2 text-gray-700 dark:text-gray-300 line-clamp-3">
-          {item.description}
-        </p>
+        <div className="item-content">
+          <h2 className="item-title">{item.title}</h2>
+          <p className="item-meta">
+            <span>💰 ₹{item.price}</span> | <span>📍 {item.location}</span>
+          </p>
+          <p className="item-desc">{item.description}</p>
+        </div>
       </Link>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        <button
-          type="button"
-          className="btn-primary px-3 py-1"
-          onClick={handleAddToCart}
-        >
+      <div className="item-actions">
+        <button className="btn-primary" onClick={handleAddToCart}>
           Add to Cart
         </button>
-
-        <button
-          type="button"
-          className="btn-secondary px-3 py-1"
-          onClick={handleAddFavourite}
-        >
+        <button className="btn-secondary" onClick={handleAddFavourite}>
           Save ❤️
         </button>
       </div>
-    </Card>
+    </div>
   );
 };
 

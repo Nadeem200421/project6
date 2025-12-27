@@ -1,0 +1,138 @@
+/* ===========================
+   Favourites Page Layout
+=========================== */
+
+.favourites-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ===========================
+   Section Styling
+=========================== */
+
+.favourites-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.dark .favourites-section {
+  background: #1f2937;
+}
+
+/* ===========================
+   Section Title
+=========================== */
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #111827;
+}
+
+.dark .section-title {
+  color: #f9fafb;
+}
+
+/* ===========================
+   Grid Layouts
+=========================== */
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.shops-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.items-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* ===========================
+   Empty State
+=========================== */
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.dark .empty-state {
+  background: #111827;
+  color: #d1d5db;
+}
+
+/* ===========================
+   Auth Message
+=========================== */
+
+.favourites-auth {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.favourites-auth p {
+  font-size: 1.1rem;
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.btn-primary {
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+}
+
+/* ===========================
+   Responsive Design
+   Mobile & Tablet (≤800px)
+=========================== */
+
+@media (max-width: 800px) {
+  .favourites-page {
+    padding: 1.5rem 0.75rem;
+    gap: 2rem;
+  }
+
+  .favourites-section {
+    padding: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .empty-state {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+}

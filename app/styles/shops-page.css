@@ -1,0 +1,103 @@
+/* =========================
+   Page Wrapper
+========================= */
+.shops-page {
+  padding: 3rem 1rem;
+  background: #f9fafb;
+}
+
+.dark .shops-page {
+  background: #111827;
+}
+
+/* =========================
+   Container
+========================= */
+.shops-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   Header
+========================= */
+.shops-header {
+  margin-bottom: 2.5rem;
+}
+
+.shops-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.shops-header p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.dark .shops-header h1 {
+  color: #f9fafb;
+}
+
+.dark .shops-header p {
+  color: #d1d5db;
+}
+
+/* =========================
+   Grid Layout
+========================= */
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* =========================
+   Empty State
+========================= */
+.shops-empty {
+  padding: 3rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.dark .shops-empty {
+  color: #d1d5db;
+}
+
+/* =========================
+   Tablet (≤1024px)
+========================= */
+@media (max-width: 1024px) {
+  .shops-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shops-header h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* =========================
+   Mobile (≤800px)
+========================= */
+@media (max-width: 800px) {
+  .shops-page {
+    padding: 2rem 1rem;
+  }
+
+  .shops-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shops-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .shops-header p {
+    font-size: 0.9rem;
+  }
+}
