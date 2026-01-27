@@ -1,7 +1,6 @@
 /* ===========================
    Favourites Page Layout
 =========================== */
-
 .favourites-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -9,27 +8,28 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 /* ===========================
    Section Styling
 =========================== */
-
 .favourites-section {
-  background: #ffffff;
+  background-color: #ffffff;
   border-radius: 16px;
   padding: 1.75rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dark .favourites-section {
-  background: #1f2937;
+  background-color: #1f2937;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
 /* ===========================
    Section Title
 =========================== */
-
 .section-title {
   font-size: 1.75rem;
   font-weight: 700;
@@ -39,12 +39,12 @@
 
 .dark .section-title {
   color: #f9fafb;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ===========================
    Grid Layouts
 =========================== */
-
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -61,25 +61,24 @@
 /* ===========================
    Empty State
 =========================== */
-
 .empty-state {
   padding: 2rem;
   text-align: center;
   font-size: 1rem;
   color: #6b7280;
-  background: #f9fafb;
+  background-color: #f9fafb;
   border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark .empty-state {
-  background: #111827;
+  background-color: #111827;
   color: #d1d5db;
 }
 
 /* ===========================
    Auth Message
 =========================== */
-
 .favourites-auth {
   padding: 5rem 1rem;
   text-align: center;
@@ -94,7 +93,6 @@
 /* ===========================
    Buttons
 =========================== */
-
 .btn-primary {
   padding: 0.7rem 1.5rem;
   border-radius: 999px;
@@ -103,7 +101,7 @@
   background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: #ffffff;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -113,9 +111,7 @@
 
 /* ===========================
    Responsive Design
-   Mobile & Tablet (≤800px)
 =========================== */
-
 @media (max-width: 800px) {
   .favourites-page {
     padding: 1.5rem 0.75rem;
