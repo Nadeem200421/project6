@@ -48,7 +48,9 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? "✖" : "☰"}
+          <span />
+          <span />
+          <span />
         </button>
 
         {/* Menu */}
