@@ -1,9 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
-import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/features/cartSlice";
 import { addFavourite } from "../../redux/features/favouritesSlice";
 
@@ -17,41 +16,49 @@ export default function MarketplaceItemDetails() {
 
   if (!item) {
     return (
-      <div className="py-10">
-        <p className="text-red-500">Item not found.</p>
+      <div className="py-20 text-center">
+        <p className="text-red-500 text-lg font-medium">
+          Item not found.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="py-10 max-w-3xl mx-auto space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-bold">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 py-10 space-y-8">
+      {/* Title */}
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
         {item.title}
       </h1>
 
-      <div className="text-sm text-gray-600 dark:text-gray-300">
-        💰 ₹{item.price} &nbsp; | &nbsp; 📍 {item.location}
+      {/* Meta info */}
+      <div className="flex flex-wrap gap-3 text-sm sm:text-base text-gray-600 dark:text-gray-300">
+        <span>💰 ₹{item.price}</span>
+        <span>•</span>
+        <span>📍 {item.location}</span>
       </div>
 
-      <p className="text-base leading-relaxed">
+      {/* Description */}
+      <p className="text-gray-700 dark:text-gray-200 text-base sm:text-lg leading-relaxed">
         {item.description}
       </p>
 
-      <div className="flex flex-wrap gap-4">
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row gap-4 pt-2">
         <button
-          className="btn-primary"
+          className="btn-primary w-full sm:w-auto"
           onClick={() => dispatch(addToCart(item))}
         >
           Add to Cart
         </button>
 
         <button
-          className="btn-secondary"
+          className="btn-secondary w-full sm:w-auto"
           onClick={() => dispatch(addFavourite(item))}
         >
           Save ❤️
         </button>
       </div>
-    </div>
+    </main>
   );
 }
