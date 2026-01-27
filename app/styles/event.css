@@ -1,69 +1,73 @@
-/* styles/events.css */
-
-/* Page Container */
+/* =========================
+   Page Wrapper
+========================= */
 .events-page {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  padding: 2rem 1rem 4rem;
 }
 
-/* Header */
+/* =========================
+   Header
+========================= */
 .events-header {
   text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
 }
 
 .events-title {
-  font-size: 2rem;
+  font-size: clamp(2rem, 4vw, 2.6rem);
   font-weight: 700;
-  color: #1f2937; /* Gray-800 */
-  margin-bottom: 8px;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
 }
 
 .events-subtitle {
   font-size: 1rem;
-  color: #6b7280; /* Gray-500 */
+  color: #475569;
+  line-height: 1.6;
 }
 
-/* No Events */
-.no-events {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #6b7280;
-  padding: 40px 0;
-}
-
-/* Grid Layout */
+/* =========================
+   Events Grid
+========================= */
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-/* Dark Mode */
+/* =========================
+   Empty State
+========================= */
+.no-events {
+  text-align: center;
+  font-size: 1rem;
+  color: #64748b;
+  padding: 3rem 0;
+}
+
+/* =========================
+   Dark Mode Support
+========================= */
 .dark .events-title {
-  color: #f9fafb;
+  color: #e5e7eb;
 }
 
-.dark .events-subtitle,
+.dark .events-subtitle {
+  color: #cbd5f5;
+}
+
 .dark .no-events {
-  color: #d1d5db;
+  color: #94a3b8;
 }
 
-/* Responsive for Mobile */
-@media (max-width: 800px) {
-  .events-page {
-    padding: 20px 16px;
-    gap: 24px;
-  }
-
-  .events-title {
-    font-size: 1.5rem;
-  }
-
-  .events-subtitle {
-    font-size: 0.95rem;
+/* =========================
+   Mobile Tweaks
+========================= */
+@media (max-width: 480px) {
+  .events-header {
+    margin-bottom: 2.5rem;
   }
 }
