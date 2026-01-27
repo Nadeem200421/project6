@@ -1,34 +1,42 @@
 /* =========================
    Base Card
 ========================= */
+
+.card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Optional hover effect */
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
 /* =========================
-   FULL PAGE DARK MODE
-   (Auto dark for ALL sections)
+   Dark Mode
 ========================= */
 
-/* Page background */
 .dark,
 .dark body {
   background-color: #020617; /* true black */
-  color: #e5e7eb;
+  color: #e5e7eb; /* light gray text */
 }
 
-/* ALL sections auto dark */
 .dark section {
   background-color: #020617;
 }
 
-/* Section inner padding areas */
-.dark .py-10 {
-  background-color: #020617;
-}
-
-/* Ensure spacing wrappers stay dark */
+.dark .py-10,
 .dark .space-y-14 {
   background-color: #020617;
 }
 
-/* Headings & paragraphs */
+/* Headings & paragraphs in dark mode */
 .dark section h1,
 .dark section h2,
 .dark section h3,
@@ -36,47 +44,40 @@
   color: #f3f4f6;
 }
 
-/* Links inside sections */
+/* Links */
 .dark section a {
   color: #93c5fd;
+  transition: color 0.2s ease;
 }
 
 .dark section a:hover {
   color: #bfdbfe;
 }
 
-/* Dividers / subtle borders if any */
+/* Dividers / subtle borders */
 .dark section hr {
   border-color: #1f2937;
 }
 
-.card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 1rem;
-  border: 1px solid #e5e7eb; /* gray-200 */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* =========================
-   Dark Mode
-========================= */
+/* Card dark mode */
 .dark .card {
-  background: #1f2937; /* gray-800 */
+  background-color: #1f2937; /* gray-800 */
   border-color: #374151; /* gray-700 */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
-/* =========================
-   Hover Utility (optional)
-========================= */
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-}
-
+/* Card hover dark mode */
 .dark .card-hover:hover {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  transform: translateY(-6px);
+}
+
+/* =========================
+   Responsive tweaks
+========================= */
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
 }
