@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import type { RootState } from "../redux/store";
 import { useRouter } from "next/navigation";
+
+import type { RootState } from "../redux/store";
 import ItemCard from "../components/marketplace/ItemCard";
 import ShopCard from "../components/shops/ShopCard";
+
 import "../styles/favourites.css";
 
 export default function FavouritesPage() {
@@ -14,7 +17,7 @@ export default function FavouritesPage() {
     (state: RootState) => state.auth.isLoggedIn
   );
 
-  const favourites = useSelector(
+  const favouriteItems = useSelector(
     (state: RootState) => state.favourites.items
   );
 
@@ -22,29 +25,27 @@ export default function FavouritesPage() {
     (state: RootState) => state.favourites.shops
   );
 
+  // 🔐 Redirect if not logged in
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.replace("/login");
+    }
+  }, [isLoggedIn, router]);
+
+  // ⏳ Prevent UI flash before redirect
   if (!isLoggedIn) {
-    return (
-      <div className="favourites-auth">
-        <p>Please login first to view your favourites.</p>
-        <button
-          className="btn-primary"
-          onClick={() => router.push("/login")}
-        >
-          Go to Login
-        </button>
-      </div>
-    );
+    return null;
   }
 
   return (
-    <div className="favourites-page">
+    <main className="favourites-page">
       {/* Favourite Shops */}
       <section className="favourites-section">
         <h1 className="section-title">Favourite Shops</h1>
 
         {favouriteShops.length === 0 ? (
           <div className="empty-state">
-            You have not saved any shops yet.
+            No favourite shops yet.
           </div>
         ) : (
           <div className="grid shops-grid">
@@ -59,18 +60,18 @@ export default function FavouritesPage() {
       <section className="favourites-section">
         <h1 className="section-title">Favourite Items</h1>
 
-        {favourites.length === 0 ? (
+        {favouriteItems.length === 0 ? (
           <div className="empty-state">
-            You have not saved any items yet.
+            No favourite items yet.
           </div>
         ) : (
           <div className="grid items-grid">
-            {favourites.map((item) => (
+            {favouriteItems.map((item) => (
               <ItemCard key={item.id} item={item} />
             ))}
           </div>
         )}
       </section>
-    </div>
+    </main>
   );
 }
