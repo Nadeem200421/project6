@@ -5,23 +5,27 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 100%;
 }
 
 /* =========================
    Card Container
 ========================= */
 .event-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background: #ffffff;
+  background-color: #ffffff;
   border-radius: 1rem;
   border: 1px solid #e5e7eb;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Hover effect */
 .event-card-link:hover .event-card {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
 }
 
 /* =========================
@@ -38,7 +42,7 @@
    Title
 ========================= */
 .event-card-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #0f172a;
   margin-bottom: 0.75rem;
@@ -71,9 +75,8 @@
   line-height: 1.5;
   margin-bottom: 1.2rem;
 
-  /* Prevent cards from becoming uneven */
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 3; /* limit lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -92,6 +95,35 @@
 .event-card-link:hover .event-card-cta {
   color: #1d4ed8;
   transform: translateX(4px);
+}
+
+/* =========================
+   Dark Mode
+========================= */
+.dark .event-card {
+  background-color: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.dark .event-card-title {
+  color: #f3f4f6;
+}
+
+.dark .event-card-meta {
+  color: #d1d5db;
+}
+
+.dark .event-card-desc {
+  color: #e5e7eb;
+}
+
+.dark .event-card-cta {
+  color: #60a5fa;
+}
+
+.dark .event-card-link:hover .event-card-cta {
+  color: #3b82f6;
 }
 
 /* =========================
