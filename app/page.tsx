@@ -20,18 +20,23 @@ export default function HomePage() {
           Hero Section
       ======================== */}
       <section className="hero-section">
-        <h1>Welcome to Your Local Community</h1>
-        <p>
-          Discover events, support local shops, and explore marketplace listings
-          in your area.
-        </p>
+        <div className="hero-content">
+          <h1>Welcome to Your Local Community</h1>
+          <p>
+            Discover events, support local shops, and explore marketplace listings
+            in your area.
+          </p>
+        </div>
       </section>
 
       {/* =========================
           Upcoming Events Section
       ======================== */}
       <section className="section">
-        <h2>Upcoming Events</h2>
+        <div className="section-header">
+          <h2>Upcoming Events</h2>
+        </div>
+
         <div className="card-grid events-grid">
           {events.slice(0, 3).map((event) => (
             <EventCard key={event.id} event={event} />
@@ -42,8 +47,11 @@ export default function HomePage() {
       {/* =========================
           Featured Shops Section
       ======================== */}
-      <section className="section">
-        <h2>Featured Local Shops</h2>
+      <section className="section section-alt">
+        <div className="section-header">
+          <h2>Featured Local Shops</h2>
+        </div>
+
         <div className="card-grid shops-grid">
           {shops.slice(0, 3).map((shop) => (
             <ShopCard key={shop.id} shop={shop} />
@@ -55,7 +63,10 @@ export default function HomePage() {
           Marketplace Section
       ======================== */}
       <section className="section">
-        <h2>Marketplace</h2>
+        <div className="section-header">
+          <h2>Marketplace</h2>
+        </div>
+
         <div className="card-grid marketplace-grid">
           {items.slice(0, 4).map((item) => (
             <ItemCard key={item.id} item={item} />
