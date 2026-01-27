@@ -1,26 +1,51 @@
-/* styles/event-details.css */
-
+/* =========================
+   Page Wrapper
+========================= */
 .event-details-page {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding-bottom: 40px;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid #e5e7eb;
 }
 
-/* Responsive */
-@media (max-width: 800px) {
+/* Dark mode */
+.dark .event-details-page {
+  background: #0f172a;
+  border-color: #1f2937;
+}
+
+/* =========================
+   Title Enhancement
+========================= */
+.event-details-page h1 {
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   Meta Section
+========================= */
+.event-details-page > div {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dark .event-details-page > div {
+  border-bottom-color: #1f2937;
+}
+
+/* =========================
+   Description
+========================= */
+.event-details-page p {
+  margin-top: 1rem;
+}
+
+/* =========================
+   Responsive Tweaks
+========================= */
+@media (max-width: 640px) {
   .event-details-page {
-    padding: 20px 16px;
-    gap: 16px;
-  }
-
-  .event-details-page h1 {
-    font-size: 1.8rem;
-  }
-
-  .event-details-page p {
-    font-size: 0.95rem;
+    padding: 2rem 1.25rem;
   }
 }
-
-/* Dark mode handled via Tailwind dark: classes */
