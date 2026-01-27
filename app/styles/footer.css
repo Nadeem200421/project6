@@ -1,17 +1,18 @@
 /* ===============================
-   Footer
+   Footer Base
 ================================ */
 .footer {
   margin-top: 60px;
   padding: 28px 20px;
-  background: #f1f5f9;
+  background-color: #f1f5f9;
   color: #475569;
   text-align: center;
   border-top: 1px solid #e5e7eb;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .dark .footer {
-  background: #0f172a;
+  background-color: #0f172a;
   color: #cbd5f5;
   border-top-color: #1e293b;
 }
@@ -21,18 +22,19 @@
 ================================ */
 .footer-container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 /* ===============================
-   Text
+   Text Styling
 ================================ */
 .footer p {
   font-size: 0.9rem;
   line-height: 1.6;
+  margin: 0;
 }
 
 /* ===============================
@@ -41,6 +43,7 @@
 .footer span {
   font-weight: 600;
   color: #4f46e5;
+  transition: color 0.3s ease;
 }
 
 .dark .footer span {
@@ -48,7 +51,7 @@
 }
 
 /* ===============================
-   Responsive
+   Responsive Design
 ================================ */
 @media (max-width: 640px) {
   .footer {
