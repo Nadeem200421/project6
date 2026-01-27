@@ -13,25 +13,32 @@ export default function ShopDetailsPage() {
 
   if (!shop) {
     return (
-      <div className="py-10">
-        <p className="text-red-500">Shop not found.</p>
+      <div className="py-20 text-center">
+        <p className="text-red-500 text-lg font-medium">
+          Shop not found.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="py-10 max-w-3xl mx-auto space-y-6">
-      <h1 className="text-2xl sm:text-3xl font-bold">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 py-10 space-y-8">
+      {/* Shop Title */}
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
         {shop.name}
       </h1>
 
-      <div className="text-sm text-gray-600 dark:text-gray-300">
-        📍 {shop.location} &nbsp; | &nbsp; 🕒 {shop.hours}
+      {/* Shop Meta */}
+      <div className="flex flex-wrap gap-3 text-sm sm:text-base text-gray-600 dark:text-gray-300">
+        <span>📍 {shop.location}</span>
+        <span>•</span>
+        <span>🕒 {shop.hours}</span>
       </div>
 
-      <p className="text-base leading-relaxed">
+      {/* Shop Description */}
+      <p className="text-gray-700 dark:text-gray-200 text-base sm:text-lg leading-relaxed">
         {shop.description}
       </p>
-    </div>
+    </main>
   );
 }
