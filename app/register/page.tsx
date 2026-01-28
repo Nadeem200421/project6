@@ -44,13 +44,7 @@ export default function RegisterPage() {
         darkMode ? "dark" : "light"
       }`}
     >
-      {/* Theme Toggle */}
-      <button
-        className="theme-toggle absolute top-5 right-5"
-        onClick={() => dispatch(toggleTheme())}
-      >
-        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
-      </button>
+      
 
       {/* Card */}
       <div className="register-card w-full max-w-md p-6 sm:p-8 rounded-xl shadow-lg space-y-6">
