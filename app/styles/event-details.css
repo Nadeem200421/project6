@@ -1,90 +1,115 @@
 /* =========================
-   Page Wrapper
+   Page Layout
 ========================= */
+
 .event-details-page {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 2.5rem 2rem;
-  border: 1px solid #e5e7eb;
-  max-width: 720px;
+  max-width: 768px;
   margin: 0 auto;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Dark mode */
-.dark .event-details-page {
-  background-color: #1f2937; /* gray-800 */
-  border-color: #374151; /* gray-700 */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 /* =========================
-   Title Enhancement
+   Title
 ========================= */
+
 .event-details-page h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: #0f172a;
-  margin-bottom: 1rem;
-}
-
-.dark .event-details-page h1 {
-  color: #f3f4f6;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.3;
 }
 
 /* =========================
-   Meta Section
+   Meta Info
 ========================= */
-.event-details-page > div {
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+
+.event-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 12px;
   font-size: 0.95rem;
-  color: #475569;
-}
-
-.dark .event-details-page > div {
-  border-bottom-color: #374151;
-  color: #d1d5db;
+  color: #6b7280;
+  align-items: center;
 }
 
 /* =========================
    Description
 ========================= */
+
 .event-details-page p {
-  margin-top: 1.25rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #334155;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #374151;
 }
 
-.dark .event-details-page p {
+/* =========================
+   Not Found
+========================= */
+
+.event-not-found {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.event-not-found p {
+  color: #dc2626;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* =========================
+   Dark Mode
+========================= */
+
+body.dark .event-details-page h1 {
+  color: #f9fafb;
+}
+
+body.dark .event-meta {
+  color: #9ca3af;
+}
+
+body.dark .event-details-page p {
   color: #e5e7eb;
 }
 
 /* =========================
-   Responsive Tweaks
+   Mobile (≤ 800px)
 ========================= */
-@media (max-width: 640px) {
+
+@media (max-width: 800px) {
   .event-details-page {
-    padding: 2rem 1rem;
+    padding: 28px 16px;
   }
 
   .event-details-page h1 {
-    font-size: 1.75rem;
-  }
-
-  .event-details-page > div {
-    font-size: 0.9rem;
-    gap: 0.25rem;
+    font-size: 1.7rem;
   }
 
   .event-details-page p {
     font-size: 0.95rem;
+  }
+}
+
+/* =========================
+   Tablet (801px – 1024px)
+========================= */
+
+@media (min-width: 801px) and (max-width: 1024px) {
+  .event-details-page h1 {
+    font-size: 2rem;
+  }
+}
+
+/* =========================
+   Desktop (≥ 1025px)
+========================= */
+
+@media (min-width: 1025px) {
+  .event-details-page h1 {
+    font-size: 2.4rem;
   }
 }
