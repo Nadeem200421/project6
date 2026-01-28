@@ -52,15 +52,6 @@ export default function LoginPage() {
 
   return (
     <main className={`login-page ${darkMode ? "dark" : "light"}`}>
-      {/* Theme Toggle */}
-      <button
-        type="button"
-        className="theme-toggle"
-        onClick={() => dispatch(toggleTheme())}
-        aria-label="Toggle theme"
-      >
-        {darkMode ? "🌞 Light" : "🌙 Dark"}
-      </button>
 
       {/* Login Card */}
       <section className="login-container">
