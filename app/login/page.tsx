@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
 import { login } from "../redux/features/authSlice";
-import { toggleTheme, restoreTheme } from "../redux/features/themeSlice";
+import { restoreTheme } from "../redux/features/themeSlice";
 import type { RootState } from "../redux/store";
 
 import "../styles/login.css";
@@ -24,6 +24,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   // Restore theme
@@ -41,8 +42,8 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setError("Please fill in all fields.");
+    if (!email.trim() || !password.trim()) {
+      setError("All fields are required.");
       return;
     }
 
@@ -51,42 +52,47 @@ export default function LoginPage() {
   };
 
   return (
-    <main className={`login-page ${darkMode ? "dark" : "light"}`}>
-
-      {/* Login Card */}
+    <main className={`login-page ${darkMode ? "dark" : ""}`}>
       <section className="login-container">
         <div className="login-card">
           <header className="login-header">
             <h1 className="login-title">Welcome Back</h1>
-            <p className="login-subtitle">
-              Login to continue
-            </p>
+            <p className="login-subtitle">Login to continue</p>
           </header>
 
-          {error && (
-            <div className="error-message">
-              {error}
-            </div>
-          )}
+          {error && <p className="login-error">{error}</p>}
 
           <form onSubmit={handleSubmit} className="login-form">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="login-input"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-            />
+            <label>
+              <span>Email Address</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="john@email.com"
+                autoComplete="email"
+              />
+            </label>
 
-            <input
-              type="password"
-              placeholder="Password"
-              className="login-input"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-            />
+            <label className="password-field">
+              <span>Password</span>
+              <div className="password-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                />
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+            </label>
 
             <button type="submit" className="login-button">
               Login
@@ -95,10 +101,8 @@ export default function LoginPage() {
 
           <footer className="login-footer">
             <p>
-              Don’t have an account?{" "}
-              <a href="/register" className="register-link">
-                Create one
-              </a>
+              Don’t have an account?
+              <a href="/register"> Create one</a>
             </p>
           </footer>
         </div>
