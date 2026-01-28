@@ -1,5 +1,5 @@
 /* =========================
-   Variables
+   CSS Variables
 ========================= */
 :root {
   --primary: #2563eb;
@@ -11,28 +11,33 @@
   --border: #e5e7eb;
 }
 
-/* Dark Mode */
-.dark {
-  --bg-light: #111827;
-  --text-light: #f9fafb;
-  --border: #1f2937;
+/* Dark mode override */
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }
 
 /* =========================
    Navbar Base
 ========================= */
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  width: 100%;
   background: var(--bg-light);
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+body.dark .navbar {
+  background: var(--bg-dark);
+  border-color: #1f2933;
 }
 
 .navbar-container {
   max-width: 1200px;
-  margin: auto;
-  padding: 0.75rem 1rem;
+  margin: 0 auto;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,14 +47,18 @@
    Logo
 ========================= */
 .navbar-logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-light);
   text-decoration: none;
 }
 
 .navbar-logo span {
-  color: var(--text-light);
+  color: var(--primary);
+}
+
+body.dark .navbar-logo {
+  color: var(--text-dark);
 }
 
 /* =========================
@@ -58,53 +67,62 @@
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
 .menu-toggle span {
-  width: 22px;
-  height: 2px;
+  width: 24px;
+  height: 3px;
   background: var(--text-light);
-  transition: 0.3s;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+body.dark .menu-toggle span {
+  background: var(--text-dark);
 }
 
 /* =========================
-   Navbar Content
+   Menu Content
 ========================= */
 .navbar-content {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 32px;
 }
 
 .navbar-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 22px;
 }
 
 .navbar-links a {
-  color: var(--text-light);
   text-decoration: none;
   font-weight: 500;
+  color: var(--text-light);
   position: relative;
 }
 
 .navbar-links a::after {
   content: "";
   position: absolute;
-  bottom: -4px;
   left: 0;
+  bottom: -4px;
   width: 0;
   height: 2px;
   background: var(--primary);
-  transition: width 0.3s;
+  transition: width 0.25s ease;
 }
 
 .navbar-links a:hover::after {
   width: 100%;
+}
+
+body.dark .navbar-links a {
+  color: var(--text-dark);
 }
 
 /* =========================
@@ -113,23 +131,24 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 14px;
 }
 
 .icon-btn {
-  font-size: 1.2rem;
   background: none;
   border: none;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
 .btn-primary {
   background: var(--primary);
   color: #fff;
-  padding: 0.45rem 1rem;
-  border-radius: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: background 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -137,21 +156,21 @@
 }
 
 .btn-outline {
-  background: none;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 600;
 }
 
-.btn-outline:hover {
-  background: var(--primary);
-  color: #fff;
+body.dark .btn-outline {
+  border-color: #374151;
+  color: var(--text-dark);
 }
 
 /* =========================
-   Mobile & Tablet (≤800px)
+   Mobile (≤ 800px)
 ========================= */
 @media (max-width: 800px) {
   .menu-toggle {
@@ -166,28 +185,42 @@
     background: var(--bg-light);
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 16px 20px;
+    gap: 20px;
     border-bottom: 1px solid var(--border);
-    transform: translateY(-10px);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.3s ease;
+    display: none;
+  }
+
+  body.dark .navbar-content {
+    background: var(--bg-dark);
+    border-color: #1f2933;
   }
 
   .navbar-content.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    display: flex;
   }
 
   .navbar-links {
     flex-direction: column;
+    gap: 14px;
     width: 100%;
   }
 
   .navbar-actions {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+/* =========================
+   Tablet (801px – 1024px)
+========================= */
+@media (min-width: 801px) and (max-width: 1024px) {
+  .navbar-container {
+    padding: 14px 28px;
+  }
+
+  .navbar-links {
+    gap: 18px;
   }
 }
