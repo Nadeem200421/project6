@@ -1,172 +1,181 @@
-/* General Page Styles */
+/* =========================
+   Theme Variables
+========================= */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --error: #dc2626;
+
+  --bg-light: #f9fafb;
+  --bg-dark: #0f172a;
+
+  --card-light: #ffffff;
+  --card-dark: #1e293b;
+
+  --text-light: #0f172a;
+  --text-dark: #f8fafc;
+
+  --border-light: #e5e7eb;
+  --border-dark: #334155;
+}
+
+/* =========================
+   Page
+========================= */
 .register-page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.3s ease, color 0.3s ease;
+  background: var(--bg-light);
+  color: var(--text-light);
+  position: relative;
 }
 
-/* Light mode */
-.register-page.light {
-  background: linear-gradient(135deg, #6b73ff, #000dff);
-  color: #000;
-}
-
-.register-page.light .register-card {
-  background-color: #ffffff;
-  color: #111827;
-}
-
-/* Dark mode */
 .register-page.dark {
-  background: linear-gradient(135deg, #121212, #1e1e1e);
-  color: #fff;
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }
 
-.register-page.dark .register-card {
-  background-color: #1e1e1e;
-  color: #fff;
-}
-
-.register-page.dark .register-input {
-  background: #2c2c2c;
-  color: #fff;
-  border: 1px solid #555;
-}
-
-.register-page.dark .register-input::placeholder {
-  color: #aaa;
-}
-
-/* Theme toggle button */
+/* =========================
+   Theme Toggle
+========================= */
 .theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   background: transparent;
   border: 1px solid currentColor;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Card Container */
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dark .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================
+   Card
+========================= */
 .register-card {
-  border-radius: 12px;
-  padding: 40px 30px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
-}
-
-.register-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-/* Title */
-.register-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 700;
+  background: var(--card-light);
   color: inherit;
 }
 
-/* Error Message */
-.register-error {
-  color: #ef4444;
-  margin-bottom: 15px;
-  font-size: 0.9rem;
+.dark .register-card {
+  background: var(--card-dark);
 }
 
-/* Form Inputs */
+/* =========================
+   Title
+========================= */
+.register-title {
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   Error
+========================= */
+.register-error {
+  background: rgba(220, 38, 38, 0.1);
+  padding: 0.6rem;
+  border-radius: 8px;
+}
+
+/* =========================
+   Form
+========================= */
 .register-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
 .register-input {
-  padding: 12px 15px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .register-input {
+  border-color: var(--border-dark);
+}
+
+.register-input::placeholder {
+  color: #9ca3af;
 }
 
 .register-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
   outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
-/* Submit Button */
+/* =========================
+   Button
+========================= */
 .register-btn {
-  padding: 12px;
-  background-color: #3b82f6;
+  background: var(--primary);
   color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.25s ease, transform 0.15s ease;
 }
 
 .register-btn:hover {
-  background-color: #2563eb;
+  background: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
-/* Login Text */
-.register-login {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: inherit;
+.register-btn:active {
+  transform: translateY(0);
 }
 
+/* =========================
+   Login Link
+========================= */
 .register-login a {
-  color: #3b82f6;
-  font-weight: 500;
+  color: var(--primary);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .register-login a:hover {
-  color: #2563eb;
   text-decoration: underline;
 }
 
-/* Responsive Design */
+/* =========================
+   Responsive
+========================= */
 
-/* Mobile (≤800px) */
+/* Mobile */
 @media (max-width: 800px) {
   .register-card {
-    padding: 30px 20px;
+    padding: 1.5rem !important;
   }
 
   .register-title {
-    font-size: 1.75rem;
-  }
-
-  .register-input {
-    font-size: 0.95rem;
-    padding: 10px 12px;
-  }
-
-  .register-btn {
-    font-size: 0.95rem;
-    padding: 10px;
+    font-size: 1.6rem;
   }
 }
 
 /* Tablet */
-@media (max-width: 1024px) and (min-width: 801px) {
+@media (min-width: 801px) and (max-width: 1024px) {
   .register-card {
-    max-width: 350px;
+    max-width: 420px;
+  }
+}
+
+/* Laptop / Desktop */
+@media (min-width: 1025px) {
+  .register-card {
+    max-width: 460px;
   }
 }
