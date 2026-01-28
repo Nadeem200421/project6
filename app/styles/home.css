@@ -1,80 +1,106 @@
 /* =========================
-   Base Layout
+   Theme Variables
+========================= */
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+
+  --bg-light: #f9fafb;
+  --bg-dark: #0f172a;
+
+  --text-light: #0f172a;
+  --text-dark: #f8fafc;
+
+  --muted-light: #6b7280;
+  --muted-dark: #94a3b8;
+
+  --border-light: #e5e7eb;
+  --border-dark: #334155;
+}
+
+/* =========================
+   Page Container
 ========================= */
 .home-container {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 1rem 4rem;
-  box-sizing: border-box;
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+.dark .home-container {
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }
 
 /* =========================
    Hero Section
 ========================= */
 .hero-section {
-  width: 100%;
-  min-height: 55vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  color: #ffffff;
-  border-radius: 1rem;
-  margin: 1.5rem 0 3rem;
-  padding: 2rem;
-  transition: background 0.3s ease;
+  padding: 4.5rem 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  color: white;
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.hero-section h1 {
+.hero-content h1 {
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-weight: 800;
   line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
-.hero-section p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: #cbd5f5;
-  line-height: 1.6;
+.hero-content p {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1rem;
+  opacity: 0.95;
 }
 
 /* =========================
-   Section Wrapper
+   Sections
 ========================= */
 .section {
-  margin-bottom: 3.5rem;
+  padding: 3rem 1rem;
 }
 
 .section-alt {
-  background-color: #f8fafc;
-  padding: 2rem 1.5rem;
-  border-radius: 1rem;
-  transition: background-color 0.3s ease;
+  background: rgba(0, 0, 0, 0.03);
 }
 
-.section-header {
-  margin-bottom: 1.5rem;
-}
-
-.section-header h2 {
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 600;
-  color: #0f172a;
+.dark .section-alt {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 /* =========================
-   Card Grid (Universal)
+   Section Header
+========================= */
+.section-header {
+  max-width: 1200px;
+  margin: 0 auto 1.8rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* =========================
+   Card Grids
 ========================= */
 .card-grid {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   gap: 1.5rem;
-  grid-auto-rows: 1fr;
 }
 
 /* Events */
@@ -89,51 +115,42 @@
 
 /* Marketplace */
 .marketplace-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-/* =========================
-   Dark Mode
-========================= */
-.dark .section-alt {
-  background-color: #1f2937;
-}
-
-.dark .section-header h2 {
-  color: #f3f4f6;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 /* =========================
    Responsive Tweaks
 ========================= */
-@media (max-width: 1024px) {
+
+/* Mobile */
+@media (max-width: 800px) {
+  .hero-section {
+    padding: 3.5rem 1rem;
+  }
+
+  .section {
+    padding: 2.5rem 1rem;
+  }
+
   .card-grid {
     gap: 1.25rem;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-section {
-    min-height: 45vh;
-    margin-bottom: 2.5rem;
-  }
-
-  .section-alt {
-    padding: 1.5rem 1rem;
+/* Tablet */
+@media (min-width: 801px) and (max-width: 1024px) {
+  .card-grid {
+    gap: 1.75rem;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-content {
-    padding: 1.25rem 0.75rem;
-  }
-
+/* Laptop / Desktop */
+@media (min-width: 1025px) {
   .section {
-    margin-bottom: 2rem;
+    padding: 4rem 1rem;
   }
 
-  .section-header h2 {
-    font-size: 1.4rem;
-    text-align: center;
+  .card-grid {
+    gap: 2rem;
   }
 }
