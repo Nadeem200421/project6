@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme, restoreTheme } from "../redux/features/themeSlice";
+import { restoreTheme } from "../redux/features/themeSlice";
 import type { RootState } from "../redux/store";
 import { useRouter } from "next/navigation";
 import "../styles/register.css";
@@ -28,76 +28,69 @@ export default function RegisterPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || !email || !password) {
+    if (!name.trim() || !email.trim() || !password.trim()) {
       setError("Please fill in all fields.");
       return;
     }
 
     setError("");
-    // API call normally happens here
     router.push("/login");
   };
 
   return (
-    <main
-      className={`register-page min-h-screen flex items-center justify-center px-4 ${
-        darkMode ? "dark" : "light"
-      }`}
-    >
-      
-
-      {/* Card */}
-      <div className="register-card w-full max-w-md p-6 sm:p-8 rounded-xl shadow-lg space-y-6">
-        <div className="text-center space-y-1">
-          <h1 className="register-title text-2xl sm:text-3xl font-bold">
-            Create Account
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+    <main className={`register-page ${darkMode ? "dark" : "light"}`}>
+      <div className="register-card">
+        <header className="register-header">
+          <h1 className="register-title">Create Account</h1>
+          <p className="register-subtitle">
             Join the community in a few steps
           </p>
-        </div>
+        </header>
 
-        {error && (
-          <p className="register-error text-center text-red-500 text-sm">
-            {error}
-          </p>
-        )}
+        {error && <p className="register-error">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="register-form space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="register-input w-full"
-          />
+        <form onSubmit={handleSubmit} className="register-form">
+          <label>
+            <span>Full Name</span>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="John Doe"
+              required
+            />
+          </label>
 
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="register-input w-full"
-          />
+          <label>
+            <span>Email Address</span>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="john@email.com"
+              required
+            />
+          </label>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="register-input w-full"
-          />
+          <label>
+            <span>Password</span>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+            />
+          </label>
 
-          <button type="submit" className="register-btn w-full">
+          <button type="submit" className="register-btn">
             Register
           </button>
         </form>
 
-        <p className="register-login text-center text-sm">
-          Already have an account?{" "}
-          <a href="/login" className="font-medium">
-            Login
-          </a>
+        <p className="register-login">
+          Already have an account?
+          <a href="/login">Login</a>
         </p>
       </div>
     </main>
