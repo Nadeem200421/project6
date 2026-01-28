@@ -1,86 +1,132 @@
 /* =========================
-   Marketplace Page Wrapper
+   Page Layout
 ========================= */
+
 .marketplace-page {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  transition: background 0.3s ease;
+  padding: 32px 20px 60px;
 }
 
 /* =========================
-   Page Title
+   Header
 ========================= */
-.marketplace-page h1 {
-  font-size: 2.25rem; /* 36px */
-  font-weight: 700;
-  color: #111827; /* dark gray */
+
+.marketplace-header {
   text-align: center;
-  margin-bottom: 1rem;
-  transition: color 0.3s ease;
+  margin-bottom: 36px;
 }
 
-.dark .marketplace-page h1 {
+.marketplace-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.marketplace-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========================
+   Empty State
+========================= */
+
+.marketplace-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 1rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px dashed #e5e7eb;
+  border-radius: 14px;
+}
+
+/* =========================
+   Grid
+========================= */
+
+.marketplace-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* =========================
+   Dark Mode
+========================= */
+
+body.dark .marketplace-title {
   color: #f9fafb;
 }
 
-/* =========================
-   Empty State Message
-========================= */
-.marketplace-page p {
-  font-size: 1rem;
-  color: #6b7280; /* gray-500 */
-  text-align: center;
-  transition: color 0.3s ease;
+body.dark .marketplace-subtitle,
+body.dark .marketplace-empty {
+  color: #9ca3af;
 }
 
-.dark .marketplace-page p {
-  color: #d1d5db; /* gray-300 */
+body.dark .marketplace-empty {
+  background: #111827;
+  border-color: #1f2933;
 }
 
 /* =========================
-   Grid Layout
+   Mobile (≤ 800px)
 ========================= */
-.marketplace-page .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 1024px) {
-  .marketplace-page .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-}
 
 @media (max-width: 800px) {
-  .marketplace-page .grid {
+  .marketplace-page {
+    padding: 24px 16px 48px;
+  }
+
+  .marketplace-title {
+    font-size: 1.7rem;
+  }
+
+  .marketplace-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .marketplace-grid {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: 18px;
   }
 }
 
 /* =========================
-   ItemCard Overrides
+   Tablet (801px – 1024px)
 ========================= */
-.marketplace-page .item-card {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.marketplace-page .item-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+@media (min-width: 801px) and (max-width: 1024px) {
+  .marketplace-title {
+    font-size: 1.9rem;
+  }
+
+  .marketplace-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* =========================
-   Dark Mode Support
+   Laptop / Desktop (≥ 1025px)
 ========================= */
-.dark .marketplace-page {
-  background-color: #1f2937; /* gray-800 */
+
+@media (min-width: 1025px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   Large Screens (≥ 1280px)
+========================= */
+
+@media (min-width: 1280px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
