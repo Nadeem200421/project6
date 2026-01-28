@@ -1,86 +1,82 @@
 /* =========================
-   Page Wrapper
+   Page Layout
 ========================= */
+
 .events-page {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 32px 20px 60px;
 }
 
 /* =========================
    Header
 ========================= */
+
 .events-header {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3rem;
+  margin-bottom: 36px;
 }
 
 .events-title {
-  font-size: clamp(2rem, 4vw, 2.6rem);
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.75rem;
-  line-height: 1.2;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 10px;
 }
 
 .events-subtitle {
   font-size: 1rem;
-  color: #475569;
-  line-height: 1.6;
-  max-width: 90%;
+  color: #6b7280;
+  max-width: 600px;
   margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =========================
+   No Events
+========================= */
+
+.no-events {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 40px;
 }
 
 /* =========================
    Events Grid
 ========================= */
+
 .events-grid {
   display: grid;
-  gap: 1.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* =========================
-   Empty State
+   Dark Mode
 ========================= */
-.no-events {
-  text-align: center;
-  font-size: 1rem;
-  color: #64748b;
-  padding: 3rem 0;
+
+body.dark .events-title {
+  color: #f9fafb;
+}
+
+body.dark .events-subtitle,
+body.dark .no-events {
+  color: #9ca3af;
 }
 
 /* =========================
-   Dark Mode Support
+   Mobile (≤ 800px)
 ========================= */
-.dark .events-page {
-  color: #e5e7eb;
-}
 
-.dark .events-title {
-  color: #f3f4f6;
-}
-
-.dark .events-subtitle {
-  color: #cbd5f5;
-}
-
-.dark .no-events {
-  color: #94a3b8;
-}
-
-/* =========================
-   Mobile Tweaks
-========================= */
-@media (max-width: 480px) {
-  .events-header {
-    margin-bottom: 2.5rem;
+@media (max-width: 800px) {
+  .events-page {
+    padding: 24px 16px 48px;
   }
 
   .events-title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .events-subtitle {
@@ -88,6 +84,42 @@
   }
 
   .events-grid {
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* =========================
+   Tablet (801px – 1024px)
+========================= */
+
+@media (min-width: 801px) and (max-width: 1024px) {
+  .events-title {
+    font-size: 1.9rem;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+}
+
+/* =========================
+   Laptop / Desktop (≥ 1025px)
+========================= */
+
+@media (min-width: 1025px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   Large Screens (≥ 1280px)
+========================= */
+
+@media (min-width: 1280px) {
+  .events-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
