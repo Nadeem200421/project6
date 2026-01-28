@@ -1,56 +1,50 @@
 /* =========================
-   Page Wrapper
+   Theme Variables
 ========================= */
-.shops-page {
-  padding: 3rem 1rem;
-  background: #f9fafb;
-}
+:root {
+  --primary: #2563eb;
 
-.dark .shops-page {
-  background: #111827;
+  --bg-light: #f9fafb;
+  --bg-dark: #0f172a;
+
+  --text-light: #0f172a;
+  --text-dark: #f8fafc;
+
+  --border-light: #e5e7eb;
+  --border-dark: #334155;
 }
 
 /* =========================
-   Container
+   Page Wrapper
 ========================= */
-.shops-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.shops-page {
+  background: var(--bg-light);
+  min-height: 100vh;
+  color: var(--text-light);
+}
+
+.dark .shops-page {
+  background: var(--bg-dark);
+  color: var(--text-dark);
 }
 
 /* =========================
    Header
 ========================= */
-.shops-header {
-  margin-bottom: 2.5rem;
-}
-
 .shops-header h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
+  letter-spacing: -0.02em;
 }
 
 .shops-header p {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #6b7280;
-}
-
-.dark .shops-header h1 {
-  color: #f9fafb;
-}
-
-.dark .shops-header p {
-  color: #d1d5db;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 /* =========================
-   Grid Layout
+   Grid
 ========================= */
 .shops-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -58,46 +52,49 @@
    Empty State
 ========================= */
 .shops-empty {
-  padding: 3rem;
-  text-align: center;
-  color: #6b7280;
-  font-size: 1rem;
-}
-
-.dark .shops-empty {
-  color: #d1d5db;
+  font-size: 0.95rem;
+  opacity: 0.85;
 }
 
 /* =========================
-   Tablet (≤1024px)
+   ShopCard link safety
 ========================= */
-@media (max-width: 1024px) {
-  .shops-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .shops-header h1 {
-    font-size: 1.75rem;
-  }
+.shop-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 /* =========================
-   Mobile (≤800px)
+   Responsive Tweaks
 ========================= */
+
+/* Mobile */
 @media (max-width: 800px) {
   .shops-page {
-    padding: 2rem 1rem;
-  }
-
-  .shops-grid {
-    grid-template-columns: 1fr;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
   }
 
   .shops-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .shops-header p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 801px) and (max-width: 1024px) {
+  .shops-grid {
+    gap: 1.75rem;
+  }
+}
+
+/* Laptop / Desktop */
+@media (min-width: 1025px) {
+  .shops-grid {
+    gap: 2rem;
   }
 }
